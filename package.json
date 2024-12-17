@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "myapp.js",
+    "dev":"nodemon myapp.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +15,8 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "puppeteer": "^23.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }
