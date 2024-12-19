@@ -20,11 +20,11 @@ exports.scrapeData = async (req, res) => {
    // Configura timeout
     await page.setDefaultNavigationTimeout(60000);
  // Navega a la URL
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await page.goto(url, { waitUntil: 'load' }); //domcontentloaded load
+  
 
-   
-
-
+    //await page.screenshot({ path: 'screenshot1.png' });
+    
     // Detecta el sitio y extrae datos
     const result = await page.evaluate(() => {
       const hostname = window.location.hostname;
@@ -41,23 +41,14 @@ exports.scrapeData = async (req, res) => {
           .querySelector('.ui-pdp-description__content')         
          ?.innerText || description;
         image = document.querySelector('.ui-pdp-gallery__figure img')?.src || image;
-
-
-
+//////////////////////////////////////////////////////////////// liverpoool
       } else if (hostname.includes('liverpool')) {
-        title =
-          document.querySelector('.a-stickyBar__title p ')?.innerText ||
-          title;
-        price =
-
-          document.querySelector('.a-stickyBar__price')?.innerText ||
-          price;
-        description = 
-        document.querySelector('.product-details-content p' ) ?.innerText ||
-         description;
-        image = 
-          document.querySelector('.a')?.src || image;
-
+        title = document.querySelector('.a-stickyBar__title p')?.innerText || title;
+        price = document.querySelector('.a-stickyBar__price')?.innerText || price;
+        description =
+          document.querySelector('.a-product__paragraphProductDescriptionContentWeb.d-none.d-lg-block.m-0.mt-2.hidedesc')?.innerText ||
+          description;
+        image = document.querySelector('.carouselGallery img')?.src || image;
       }
 
       return { title, price ,description, image};
