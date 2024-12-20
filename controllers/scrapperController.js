@@ -69,4 +69,6 @@ exports.scrapeData = async (req, res) => {
       details: error.message,
     });
   }
+
+  console.log('hola soy el maico');
 };
