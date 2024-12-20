@@ -49,13 +49,19 @@ exports.scrapeData = async (req, res) => {
           document.querySelector('.a-product__paragraphProductDescriptionContentWeb.d-none.d-lg-block.m-0.mt-2.hidedesc')?.innerText ||
           description;
         image = document.querySelector('.carouselGallery img')?.src || image;
+        price = price.slice(0, -2);
+
       }
 
       return { title, price ,description, image};
+      
     });
     await browser.close();
  // Devuelve los datos extraídos
     res.json(result);
+   
+    
+    
   } catch (error) {
     console.error('Error scraping the URL:', error.message);
     res.status(500).json({

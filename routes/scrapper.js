@@ -2,6 +2,8 @@ const express = require('express');
 const { scrapeData } = require('../controllers/scrapperController');
 const product = require('../models/products');
 const router = express.Router();
+ 
+  
 router.post('/save-product', async (req, res) => {
     const { name, description, price, image_url, product_url } = req.body;
   
@@ -20,6 +22,6 @@ router.post('/save-product', async (req, res) => {
     }
   });
 // Endpoint para scraping
-router.post('/', scrapeData);
+router.post('/save-products ', scrapeData)
 
 module.exports = router;
