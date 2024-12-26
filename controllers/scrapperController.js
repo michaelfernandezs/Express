@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 exports.scrapeData = async (req, res) => {
-  const { url } = req.body;
+  const { url }= req.body
 
   if (!url) {
     return res.status(400).json({ error: 'URL is required' });
@@ -18,7 +18,7 @@ exports.scrapeData = async (req, res) => {
       'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     );
    // Configura timeout
-    await page.setDefaultNavigationTimeout(60000);
+    await page.setDefaultNavigationTimeout(70000);
  // Navega a la URL
     await page.goto(url, { waitUntil: 'load' }); //domcontentloaded load
   
@@ -26,7 +26,7 @@ exports.scrapeData = async (req, res) => {
     //await page.screenshot({ path: 'screenshot1.png' });
     
     // Detecta el sitio y extrae datos
-    const result = await page.evaluate(() => {
+    const scrapedData = await page.evaluate(() => {
       const hostname = window.location.hostname;
       let title = 'No title found';
       let price = 'No price found';
@@ -57,13 +57,16 @@ exports.scrapeData = async (req, res) => {
       
     });
     await browser.close();
+
+
  // Devuelve los datos extraídos
-    res.json(result);
+    res.status(200).json(scrapedData);
    
     
     
   } catch (error) {
     console.error('Error scraping the URL:', error.message);
+    console.log(url);
     res.status(500).json({
       error: 'Error scraping the URL',  
       details: error.message,

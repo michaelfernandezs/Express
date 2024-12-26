@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const sequelize = require('./config/database');
-
+const scrapperRoutes = require('./routes/scrapper');
 require('dotenv').config();
 
 const app = express();
@@ -12,8 +12,9 @@ app.use(cors());
 app.use(express.json());
 
 
+
 // Rutas
-app.use('/scrape', require('./routes/scrapper'));
+app.use('/',scrapperRoutes);
 
 
 sequelize
@@ -22,7 +23,7 @@ sequelize
   .catch((error) => console.error('Error al conectar con la base de datos:', error));
 
   // Sincronización de modelos
-sequelize.sync({ force: false })
+sequelize.sync({ force: true })
 .then(() => console.log('Tablas sincronizadas.'))
 .catch((error) => console.error('Error al sincronizar las tablas:', error));
 
