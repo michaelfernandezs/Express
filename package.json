@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "myapp.js",
-    "dev": "nodemon myapp.js"
+    "dev": "nodemon myapp.js",
+    "format": "prettier --write ."
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "sequelize": "^6.37.5"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "prettier": "^3.4.2"
   }
 }
