@@ -42,7 +42,6 @@ exports.scrapeData = async (req, res) => {
           description;
         image =
           document.querySelector('.ui-pdp-gallery__figure img')?.src || image;
-        
       } else if (hostname.includes('liverpool')) {
         title =
           document.querySelector('.a-stickyBar__title p')?.innerText || title;
@@ -54,6 +53,13 @@ exports.scrapeData = async (req, res) => {
           )?.innerText || description;
         image = document.querySelector('.carouselGallery img')?.src || image;
         price = price.slice(0, -2);
+      } else if (hostname.includes('amazon')) {
+        title = document.querySelector('#productTitle')?.innerText || title;
+        price = document.querySelector('.a-price-whole')?.innerText || price;
+        description =
+          document.querySelector('.descriptions')?.innerText ||
+          description;
+        image = document.querySelector('#landingImage')?.src || image;
       }
 
       return { title, price, description, image };
@@ -70,6 +76,4 @@ exports.scrapeData = async (req, res) => {
       details: error.message,
     });
   }
-
-  console.log('hola soy el maico');
 };
