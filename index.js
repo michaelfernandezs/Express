@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const sequelize = require('./config/database');
+// const sequelize = require('./config/database');
 const scrapperRoutes = require('./routes/scrapper');
 require('dotenv').config();
 
@@ -14,29 +14,29 @@ app.use(express.json());
 // Rutas
 app.use('/', scrapperRoutes);
 
-sequelize
-  .authenticate()
-  .then(() => console.log('Conexión exitosa con la base de datos.'))
-  .catch((error) =>
-    console.error('Error al conectar con la base de datos:', error)
-  );
+// sequelize
+//   .authenticate()
+//   .then(() => console.log('Conexión exitosa con la base de datos.'))
+//   .catch((error) =>
+//     console.error('Error al conectar con la base de datos:', error)
+//   );
 
-// Sincronización de modelos
-sequelize
-  .sync({ force: true })
-  .then(() => console.log('Tablas sincronizadas.'))
-  .catch((error) => console.error('Error al sincronizar las tablas:', error));
+// // Sincronización de modelos
+// sequelize
+//   .sync({ force: true })
+//   .then(() => console.log('Tablas sincronizadas.'))
+//   .catch((error) => console.error('Error al sincronizar las tablas:', error));
 
-async function listTables() {
-  try {
-    const tables = await sequelize.query('SHOW TABLES', {
-      type: sequelize.QueryTypes.SHOWTABLES,
-    });
-    console.log('Tablas:', tables);
-  } catch (error) {
-    console.error('Error listing tables:', error);
-  }
-}
+// async function listTables() {
+//   try {
+//     const tables = await sequelize.query('SHOW TABLES', {
+//       type: sequelize.QueryTypes.SHOWTABLES,
+//     });
+//     console.log('Tablas:', tables);
+//   } catch (error) {
+//     console.error('Error listing tables:', error);
+//   }
+// }
 
 listTables();
 app.listen(PORT, () => {
