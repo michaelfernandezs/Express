@@ -8,8 +8,6 @@
     "dev": "nodemon myapp.js",
     "format": "prettier --write .",
     "postinstall": "node node_modules/puppeteer/install.js"
-
-
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +17,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mysql2": "^3.11.5",
-    "puppeteer": "^23.10.1",
+    "puppeteer": "^24.7.1",
     "sequelize": "^6.37.5"
   },
   "devDependencies": {
