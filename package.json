@@ -8,7 +8,6 @@
     "dev": "nodemon index.js",
     "format": "prettier --write .",
     "postinstall": "npx puppeteer browsers install"
-
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +21,7 @@
     "sequelize": "^6.37.5"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.7.10",
     "nodemon": "^3.1.9",
     "prettier": "^3.4.2"
   }
