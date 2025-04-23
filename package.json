@@ -1,13 +1,14 @@
 {
   "name": "express",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "myapp.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "myapp.js",
     "dev": "nodemon myapp.js",
     "format": "prettier --write .",
-    "postinstall": "node node_modules/puppeteer/install.js"
+    "postinstall": "npx puppeteer browsers install"
+
   },
   "author": "",
   "license": "ISC",
