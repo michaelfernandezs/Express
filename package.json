@@ -1,11 +1,11 @@
 {
   "name": "express",
   "version": "1.0.0",
-  "main": "myapp.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "myapp.js",
-    "dev": "nodemon myapp.js",
+    "start": "index.js",
+    "dev": "nodemon index.js",
     "format": "prettier --write .",
     "postinstall": "npx puppeteer browsers install"
 
