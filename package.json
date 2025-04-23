@@ -7,7 +7,8 @@
     "start": "myapp.js",
     "dev": "nodemon myapp.js",
     "format": "prettier --write .",
-    "postinstall": "npx puppeteer browsers install"
+    "postinstall": "node node_modules/puppeteer/install.js"
+
 
   },
   "author": "",
